@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePendingTable extends Migration
+class CreatePendingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePendingTable extends Migration
      */
     public function up()
     {
-        Schema::create('pending', function (Blueprint $table) {
+        Schema::create('pendings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('machine_id')->nullable();
             $table->foreign('machine_id')->references('id')->on('machines')
@@ -31,6 +31,6 @@ class CreatePendingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pending');
+        Schema::dropIfExists('pendings');
     }
 }

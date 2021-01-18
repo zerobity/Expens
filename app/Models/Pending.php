@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pending extends Model
 {
-    use HasFactory;
+    protected $fillable = ['machine_id', 'line', 'status'];
 }

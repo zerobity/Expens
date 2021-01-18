@@ -43,3 +43,27 @@
       </ul>
   </div>
 </nav>
+
+<style>
+.navbar
+{
+  background: #343a40 !important;
+}
+.navbar-brand
+{
+  font-size: 45px !important;
+  color: #979797 !important;
+}
+.nav-item
+{
+  font-size: 20px !important;
+}
+.nav-link
+{
+  color: #979797 !important;
+}
+.navbar-toggler
+{
+  background: #979797 !important;
+}
+</style>

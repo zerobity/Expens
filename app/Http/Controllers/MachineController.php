@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Machine;
 use App\Models\Stock;
 use App\Models\Product;
+use App\Models\Pending;
 use App\Models\MachineProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MachineController extends Controller
 {
@@ -36,15 +38,15 @@ class MachineController extends Controller
         ]);
     }
 
-    public function rx($machineSlug, Request $request)
+    public function rx($machineSlug, $password)
     {
         $machine = Machine::where('slug',$machineSlug)->firstOrFail();
-        $products = MachineProduct::where('shop_id', $machine->id)->products->get();
-        dd($products);
-
-        return view('shop')->with([
-            'machine' => $machine,
-            'stock' => $stock,
-        ]);
+        $hash = Hash::make($password);
+        if (Hash::check($password, $machine->password)) {
+            # code...
+            $pending = Pending::where('machine_id', $machine->id)->firstOrFail();
+            return '##'.$pending->line.'##';
+        }
+        return 0;
     }
 }

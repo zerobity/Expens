@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MachineController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
 Route::get('/machine/{machine}', [MachineController::class, 'index'])->name('machine.index');
 Route::get('/machine/{machine}/producto/{product}', [MachineController::class, 'show'])->name('machine.show');
-Route::get('/machine/{machine}/RX', [MachineController::class, 'rx'])->name('machine-rx')->middleware('auth');
+Route::get('/machine/{machine}/rx/{password}', [MachineController::class, 'rx'])->name('machine-rx');
 
+Route::post('/checkout_mp', [CheckoutController::class, 'checkmp'])->name('checkout.mp');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');

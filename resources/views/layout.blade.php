@@ -32,7 +32,7 @@
 
 <body>
     @include('partials.navb')
-
+    <br>
     <div id="app">
         @yield('content')
     </div>
